@@ -4,11 +4,21 @@ export ZSH="/Users/yang/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_MODE="awesome-patched"
 
+ZSH_DISABLE_COMPFIX=true
+ENABLE_CORRECTION="true"
+COMPLETION_WAITING_DOTS="true"
+
 DEFAULT_USER=$(whoami)
 
 plugins=(
-    git
-    zsh-autosuggestions
+  git
+  iterm2
+  macports
+  man
+  osx
+  python
+  zsh-syntax-highlighting
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
