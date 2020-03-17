@@ -7,6 +7,7 @@
 * Increase keyboard key repeat rate and initial delay
 
 ```bash
+# Restart to see the change
 defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
 defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
 ```
@@ -20,6 +21,7 @@ defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
 * Alfred
 * iTerm2
 * VSCode
+* Raindrop.io
 
 ### VSCode Setup
 
@@ -68,14 +70,25 @@ defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
 ## Terminal
 
 * oh-my-zsh
-  * powerlevel10k
-  * zsh-autosuggestions
+  * [powerlevel10k](https://github.com/romkatv/powerlevel10k)
+  * [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+  * [zsg-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 * HomeBrew
 
 ### iTerm2
 
+#### Enable Natural Text Editing
+
 Profile -> Keys -> Presets -> Natural Text Editing
 
-## References
+#### Theme
 
+Minimal
+
+#### Color Presets
+
+Clovis’ iTerm2 color scheme file, follow this guide: [Configuration of a beautiful (efficient) terminal and prompt on OSX in 7minutes](https://medium.com/@Clovis_app/configuration-of-a-beautiful-efficient-terminal-and-prompt-on-osx-in-7-minutes-827c29391961)
+
+## References
 * https://gist.github.com/kevin-smets/8568070
+* https://medium.com/@Clovis_app/configuration-of-a-beautiful-efficient-terminal-and-prompt-on-osx-in-7-minutes-827c29391961
