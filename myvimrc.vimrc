@@ -50,6 +50,9 @@ let mapleader = ","
 " Fast saving
 nmap <leader>w :w!<cr>
 
+" Format API Metrics log entries
+nmap <leader>fapi :%s/,/\r/g<cr>
+
 " Searching/Moving
 " nnoremap / /\v
 " vnoremap / /\v
@@ -110,6 +113,12 @@ vnoremap <F1> <ESC>
 
 " Finally, I really like TextMate's "save on losing focus" feature. I can't remember a time when I didn't want to save a file after tabbing away from my editor (especially with version control and Vim's persistent undo):
 au FocusLost * :wa
+
+" Allow deleting single characters without updating the default register
+noremap x "_x
+
+" Paste in visual mode without updating the default register
+vnoremap p "_dP
 
 " F5 to set paste
 set pastetoggle=<f5>
