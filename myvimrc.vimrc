@@ -120,6 +120,12 @@ noremap x "_x
 " Paste in visual mode without updating the default register
 vnoremap p "_dP
 
+" Quickly copy/paste to/from system clipboard
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+noremap <Leader>Y "+y
+noremap <Leader>P "+p
+
 " F5 to set paste
 set pastetoggle=<f5>
 
