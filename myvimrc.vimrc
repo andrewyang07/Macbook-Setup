@@ -1,9 +1,14 @@
 " Reference: https://stevelosh.com/blog/2010/09/coming-home-to-vim/
 
+execute pathogen#infect()
+
+let g:VimTodoListsDatesEnabled = 1
+
 inoremap jk <ESC>
 
 " The filetype and call lines are for loading Pathogen
 filetype off
+
 " call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
 
