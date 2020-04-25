@@ -90,12 +90,15 @@ Minimal
 Clovis’ iTerm2 color scheme file, follow this guide: [Configuration of a beautiful (efficient) terminal and prompt on OSX in 7minutes](https://medium.com/@Clovis_app/configuration-of-a-beautiful-efficient-terminal-and-prompt-on-osx-in-7-minutes-827c29391961)
 
 ### VIM
-Symlink vimrc
-```
+
+Symlink `~/.vimrc` to `myvimrc.vimrc`
+
+```bash
 rm ~/.vimrc
 ln -sf ~/Documents/Projects/Macbook-Setup/myvimrc.vimrc ~/.vimrc
 ```
 
 ## References
+
 * https://gist.github.com/kevin-smets/8568070
 * https://medium.com/@Clovis_app/configuration-of-a-beautiful-efficient-terminal-and-prompt-on-osx-in-7-minutes-827c29391961

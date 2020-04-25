@@ -1,5 +1,21 @@
 # VIM Setup Guide
 
+## Install NeoVim
+
+## Reusing Vim Configuration in NeoVim
+
+```bash
+mkdir -p ~/.config/nvim
+```
+
+in `~/.config/nvim/init.vim`, put
+
+```
+set runtimepath^=~/.vim runtimepath+=~/.vim/after 
+let &packpath = &runtimepath
+source ~/.vimrc
+```
+
 ## Install [pathogen.vim](https://github.com/tpope/vim-pathogen)
 
 ```bash

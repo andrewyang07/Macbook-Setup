@@ -9,6 +9,9 @@ inoremap jk <ESC>
 " The filetype and call lines are for loading Pathogen
 filetype off
 
+" Enable Syntax
+syntax on
+
 " call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
 
@@ -39,7 +42,6 @@ set ttyfast
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
-syntax on
 set encoding=utf-8
 set clipboard=unnamedplus
 
@@ -58,7 +60,7 @@ nmap <leader>w :w!<cr>
 " Format API Metrics log entries
 nmap <leader>fapi :%s/,/\r/g<cr>
 
-" Searching/Moving
+" Searching/Moving - automatically enable regex when searching
 " nnoremap / /\v
 " vnoremap / /\v
 
@@ -67,7 +69,7 @@ set ignorecase
 set smartcase
 
 " gdefault applies substitutions globally on lines. For example, instead of :%s/foo/bar/g you just type :%s/foo/bar/. This is almost always what you want (when was the last time you wanted to only replace the first occurrence of a word on a line?) and if you need the previous behavior you just tack on the g again.
-" set gdefault
+set gdefault
 
 " incsearch, showmatch and hlsearch work together to highlight search results (as you type). It's really quite handy, as long as you have the next line as well.
 set incsearch
@@ -92,14 +94,15 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " New Vim users will want the following lines to teach them to do things right:
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
+" nnoremap <up> <nop>
+" nnoremap <down> <nop>
+" nnoremap <left> <nop>
+" nnoremap <right> <nop>
 " inoremap <up> <nop>
 " inoremap <down> <nop>
 " inoremap <left> <nop>
 " inoremap <right> <nop>
+
 nnoremap j gj
 nnoremap k gk
 
@@ -116,13 +119,13 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-" Finally, I really like TextMate's "save on losing focus" feature. I can't remember a time when I didn't want to save a file after tabbing away from my editor (especially with version control and Vim's persistent undo):
+" Save on losing focus.
 au FocusLost * :wa
 
 " Allow deleting single characters without updating the default register
 noremap x "_x
 
-" Paste in visual mode without updating the default register
+" Paste in visual mode (when replacing text) without updating the default register
 vnoremap p "_dP
 
 " Quickly copy/paste to/from system clipboard
