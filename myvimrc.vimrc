@@ -1,8 +1,10 @@
 " Reference: https://stevelosh.com/blog/2010/09/coming-home-to-vim/
 
-execute pathogen#infect()
+" let g:VimTodoListsDatesEnabled = 1
 
-let g:VimTodoListsDatesEnabled = 1
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Basic Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 inoremap jk <ESC>
 
@@ -58,7 +60,7 @@ let mapleader = ","
 nmap <leader>w :w!<cr>
 
 " Format API Metrics log entries
-nmap <leader>fapi :%s/,/\r/g<cr>
+nmap <leader>fapi :%s/,/\r<cr>
 
 " Searching/Moving - automatically enable regex when searching
 " nnoremap / /\v
@@ -105,6 +107,9 @@ map <C-l> <C-W>l
 
 nnoremap j gj
 nnoremap k gk
+
+vnoremap j gj
+vnoremap k gk
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -168,3 +173,42 @@ function! VisualSelection(direction, extra_filter) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Neovim Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Switching Between Terminal Mode and Normal Mode
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+    tnoremap <C-v><Esc> <Esc>
+endif
+
+" Highlight the terminal cursor
+if has('nvim')
+    highlight! link TermCursor Cursor
+    highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Invoke the fzf file finder by pressing <C-p>
+nnoremap <C-p> :<C-u>FZF<CR>
+
+" minpac shortcuts
+command! PackUpdate call minpac#update()
+command! PackClean call minpac#clean()
+
+" Initialize minpac
+packadd minpac 
+call minpac#init()
+
+call minpac#add('tpope/vim-unimpaired')
+call minpac#add('aserebryakov/vim-todo-lists')
+call minpac#add('tpope/vim-surround')
+call minpac#add('tpope/vim-unimpaired')
+
+call minpac#add('k-takata/minpac', {'type': 'opt'})
