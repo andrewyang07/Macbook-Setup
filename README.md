@@ -28,7 +28,7 @@ defaults write -g KeyRepeat -int 2 # normal minimum is 2 (30 ms)
 #### settings.json
 
 ```json
-{    
+{
     "window.zoomLevel": 0,
     "editor.tabSize": 2,
     "terminal.integrated.rendererType": "dom",
