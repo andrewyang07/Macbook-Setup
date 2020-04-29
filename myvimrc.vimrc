@@ -6,34 +6,25 @@
 " => Basic Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-inoremap jk <ESC>
+inoremap jk <ESC>       " Easier way to exit insert mode
+filetype off            " The filetype and call lines are for loading Pathogen
+syntax on               " enable syntax processing              
 
-" The filetype and call lines are for loading Pathogen
-filetype off
-
-" Enable Syntax
-syntax on
-
-" call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
 
-" Get rid of all the crap that Vim does to be vi compatible. It's 2010 °™ we don't need to be compatible with vi at the expense of functionality any more.
-set nocompatible
+set nocompatible        " get rid of all the crap that Vim does to be vi compatible
+set modelines=0         " prevents some security exploits having to do with modelines in files
 
-" The modelines bit prevents some security exploits having to do with modelines in files.
-set modelines=0
-
-" Tab settings
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
+set tabstop=4           " 4 space tab
+set shiftwidth=4        " 4 space tab
+set softtabstop=4       " 4 space tab
+set expandtab           " use spaces for tabs
 
 set encoding=utf-8
 set scrolloff=3
 set autoindent
 set showmode
-set showcmd
+set showcmd             " show command in bottom bar
 set hidden
 set wildmenu
 " set wildmode=list:longest
@@ -47,48 +38,30 @@ set laststatus=2
 set encoding=utf-8
 set clipboard=unnamedplus
 
-" relativenumber changes Vim's line number column to display how far away each line is from the current one, instead of showing the absolute line number.
-set relativenumber
+set relativenumber       " relativenumber changes Vim's line number column to display how far away each line is from the current one, instead of showing the absolute line number.
 
-" undofile tells Vim to create <FILENAME>.un~ files whenever you edit a file. These files contain undo information so you can undo previous actions even after you close and reopen a file.
-set undofile
+set undofile             " undofile tells Vim to create <FILENAME>.un~ files whenever you edit a file. These files contain undo information so you can undo previous actions even after you close and reopen a file.
 
-" Set <leader> key
-let mapleader = ","
+let mapleader = ","      " Set <leader> key to ,
 
-" Fast saving
-nmap <leader>w :w!<cr>
+" nnoremap / /\v         " Searching/Moving - automatically enable regex when searching
+" vnoremap / /\v         " Searching/Moving - automatically enable regex when searching
 
-" Format API Metrics log entries
-nmap <leader>fapi :%s/,/\r<cr>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Key Remaps
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Searching/Moving - automatically enable regex when searching
-" nnoremap / /\v
-" vnoremap / /\v
+nmap <leader>w :w!<cr>   " Faster saving
 
-" ignorecase and smartcase together make Vim deal with case-sensitive search intelligently. If you search for an all-lowercase string your search will be case-insensitive, but if one or more characters is uppercase the search will be case-sensitive. Most of the time this does what you want.
-set ignorecase
-set smartcase
-
-" gdefault applies substitutions globally on lines. For example, instead of :%s/foo/bar/g you just type :%s/foo/bar/. This is almost always what you want (when was the last time you wanted to only replace the first occurrence of a word on a line?) and if you need the previous behavior you just tack on the g again.
-set gdefault
-
-" incsearch, showmatch and hlsearch work together to highlight search results (as you type). It's really quite handy, as long as you have the next line as well.
-set incsearch
-set showmatch
-set hlsearch
+nmap <leader>fapi :%s/,/\r<cr>   " Format API Metrics log entries
 
 " The <leader><space> mapping makes it easy to clear out a search by typing ,<space>. This gets rid of the distracting highlighting once I've found what I'm looking for.
 nnoremap <leader><space> :noh<cr>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
-" Make the tab key match bracket pairs. I use this to move around all the time and <tab> is a hell of a lot easier to type than %.
-nnoremap <tab> %
-vnoremap <tab> %
+nnoremap <tab> %         " Make the tab key match bracket pairs. 
+vnoremap <tab> %         " Make the tab key match bracket pairs. 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Moving around, tabs, windows and buffers
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -110,6 +83,16 @@ nnoremap k gk
 
 vnoremap j gj
 vnoremap k gk
+
+set ignorecase           
+set smartcase            " ignorecase and smartcase together make Vim deal with case-sensitive search intelligently. If you search for an all-lowercase string your search will be case-insensitive, but if one or more characters is uppercase the search will be case-sensitive. Most of the time this does what you want.
+
+
+set gdefault             " gdefault applies substitutions globally on lines. For example, instead of :%s/foo/bar/g you just type :%s/foo/bar/. This is almost always what you want (when was the last time you wanted to only replace the first occurrence of a word on a line?) and if you need the previous behavior you just tack on the g again.
+
+set incsearch
+set showmatch
+set hlsearch             " incsearch, showmatch and hlsearch work together to highlight search results (as you type). It's really quite handy, as long as you have the next line as well.
 
 """"""""""""""""""""""""""""""
 " => Visual mode related

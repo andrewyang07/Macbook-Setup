@@ -98,6 +98,15 @@ rm ~/.vimrc
 ln -sf ~/Documents/Projects/Macbook-Setup/myvimrc.vimrc ~/.vimrc
 ```
 
+### ZSH
+
+Symlink `~/.zshrc` to `myzshrc.zshrc`
+
+```bash
+rm ~/.zshrc
+ln -sf ~/Documents/Projects/Macbook-Setup/myzshrc.zshrc ~/.zshrc
+```
+
 ## References
 
 * https://gist.github.com/kevin-smets/8568070

@@ -1,6 +1,19 @@
+###############################################################
+# => Path
+###############################################################
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/yang/.oh-my-zsh"
 
+
+###############################################################
+# => Envrionment Variables
+###############################################################
+export VIMCONFIG=~/.vim
+export VIMDATA=~/.vim
+
+###############################################################
+# => Theme Settings
+###############################################################
 ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_MODE="awesome-patched"
 
@@ -8,8 +21,22 @@ ZSH_DISABLE_COMPFIX=true
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
+###############################################################
+# => Neovim alias
+###############################################################
+
+# Use Neovim as "preferred editor"
+export VISUAL=nvim
+
+# Use Neovim instead of Vim or Vi
+alias vim=nvim
+alias vi=nvim
+
 DEFAULT_USER=$(whoami)
 
+###############################################################
+# => Plugins
+###############################################################
 plugins=(
   git
   iterm2
