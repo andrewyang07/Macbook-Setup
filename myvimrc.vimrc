@@ -1,12 +1,12 @@
 " Reference: https://stevelosh.com/blog/2010/09/coming-home-to-vim/
 
-" let g:VimTodoListsDatesEnabled = 1
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Basic Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-inoremap jk <ESC>       " Easier way to exit insert mode
+" Easier way to exit insert mode
+inoremap jk <ESC>
+
 filetype off            " The filetype and call lines are for loading Pathogen
 syntax on               " enable syntax processing              
 
@@ -39,28 +39,33 @@ set encoding=utf-8
 set clipboard=unnamedplus
 
 set relativenumber       " relativenumber changes Vim's line number column to display how far away each line is from the current one, instead of showing the absolute line number.
-
 set undofile             " undofile tells Vim to create <FILENAME>.un~ files whenever you edit a file. These files contain undo information so you can undo previous actions even after you close and reopen a file.
 
-let mapleader = ","      " Set <leader> key to ,
+" Set <leader> key to ,
+let mapleader = ","
 
-" nnoremap / /\v         " Searching/Moving - automatically enable regex when searching
-" vnoremap / /\v         " Searching/Moving - automatically enable regex when searching
+" Searching/Moving - automatically enable regex when searching
+" nnoremap / /\v
+" vnoremap / /\v
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Key Remaps
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-nmap <leader>w :w!<cr>   " Faster saving
+" Faster saving
+" nmap <leader>w :w!<cr>
+nmap <leader>w :w<cr>
 
-nmap <leader>fapi :%s/,/\r<cr>   " Format API Metrics log entries
+" Format API Metrics log entries
+nmap <leader>fapi :%s/,/\r<cr>
 
 " The <leader><space> mapping makes it easy to clear out a search by typing ,<space>. This gets rid of the distracting highlighting once I've found what I'm looking for.
 nnoremap <leader><space> :noh<cr>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
-nnoremap <tab> %         " Make the tab key match bracket pairs. 
-vnoremap <tab> %         " Make the tab key match bracket pairs. 
+" Make the tab key match bracket pairs. 
+nnoremap <tab> %
+vnoremap <tab> %
 
 " Smart way to move between windows
 map <C-j> <C-W>j
@@ -193,5 +198,6 @@ call minpac#add('tpope/vim-unimpaired')
 call minpac#add('aserebryakov/vim-todo-lists')
 call minpac#add('tpope/vim-surround')
 call minpac#add('tpope/vim-unimpaired')
+call minpac#add('tpope/vim-commentary')
 
 call minpac#add('k-takata/minpac', {'type': 'opt'})
