@@ -199,5 +199,6 @@ call minpac#add('aserebryakov/vim-todo-lists')
 call minpac#add('tpope/vim-surround')
 call minpac#add('tpope/vim-unimpaired')
 call minpac#add('tpope/vim-commentary')
+call minpac#add('junegunn/fzf')
 
 call minpac#add('k-takata/minpac', {'type': 'opt'})
