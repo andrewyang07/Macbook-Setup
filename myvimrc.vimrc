@@ -3,6 +3,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Basic Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" set background=dark
+set background=light
 
 " Easier way to exit insert mode
 inoremap jk <ESC>
@@ -167,6 +169,11 @@ endfunction
 " => Neovim Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Use true color
+if has('nvim')
+    set termguicolors
+endif
+
 " Switching Between Terminal Mode and Normal Mode
 if has('nvim')
     tnoremap <Esc> <C-\><C-n>
@@ -201,4 +208,24 @@ call minpac#add('tpope/vim-unimpaired')
 call minpac#add('tpope/vim-commentary')
 call minpac#add('junegunn/fzf')
 
+" Vim Markdown Support
+call minpac#add('godlygeek/tabular')
+call minpac#add('plasticboy/vim-markdown')
+let g:vim_markdown_folding_disabled = 1
+
+" Color Schemes
+call minpac#add('morhetz/gruvbox')
+call minpac#add('joshdick/onedark.vim')
+call minpac#add('altercation/vim-colors-solarized')
+" call minpac#add('drewtempelmeyer/palenight.vim')
+
+" minpac must have {'type': 'opt'} so that it can be loaded with `packadd`.
 call minpac#add('k-takata/minpac', {'type': 'opt'})
+
+" Load all plugins
+packloadall
+
+" Set color schemes
+" colorscheme onedark
+colorscheme solarized
+set termguicolors
