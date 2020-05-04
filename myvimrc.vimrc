@@ -3,7 +3,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Basic Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" set background=dark
 set background=dark
 
 " Easier way to exit insert mode
@@ -17,9 +16,9 @@ filetype plugin indent on
 set nocompatible        " get rid of all the crap that Vim does to be vi compatible
 set modelines=0         " prevents some security exploits having to do with modelines in files
 
-set tabstop=4           " 4 space tab
-set shiftwidth=4        " 4 space tab
-set softtabstop=4       " 4 space tab
+set tabstop=2           " 4 space tab
+set shiftwidth=2        " 4 space tab
+set softtabstop=2       " 4 space tab
 set expandtab           " use spaces for tabs
 
 set encoding=utf-8
