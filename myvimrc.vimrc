@@ -217,6 +217,7 @@ call minpac#add('morhetz/gruvbox')
 call minpac#add('joshdick/onedark.vim')
 call minpac#add('altercation/vim-colors-solarized')
 call minpac#add('drewtempelmeyer/palenight.vim')
+call minpac#add('itchyny/lightline.vim')
 
 " minpac must have {'type': 'opt'} so that it can be loaded with `packadd`.
 call minpac#add('k-takata/minpac', {'type': 'opt'})
