@@ -43,12 +43,25 @@ set relativenumber       " relativenumber changes Vim's line number column to di
 " set undodir=~/.vim/undodir
 set undofile             " undofile tells Vim to create <FILENAME>.un~ files whenever you edit a file. These files contain undo information so you can undo previous actions even after you close and reopen a file.
 
+set colorcolumn=80
+highlight ColorColumn ctermbg=0 guibg=lightgrey
+
 " Set <leader> key to space
 let mapleader = " "
 
 " Searching/Moving - automatically enable regex when searching
 " nnoremap / /\v
 " vnoremap / /\v
+
+set ignorecase           
+set smartcase            " ignorecase and smartcase together make Vim deal with case-sensitive search intelligently. If you search for an all-lowercase string your search will be case-insensitive, but if one or more characters is uppercase the search will be case-sensitive. Most of the time this does what you want.
+
+
+set gdefault             " gdefault applies substitutions globally on lines. For example, instead of :%s/foo/bar/g you just type :%s/foo/bar/. This is almost always what you want (when was the last time you wanted to only replace the first occurrence of a word on a line?) and if you need the previous behavior you just tack on the g again.
+
+set incsearch
+set showmatch
+set hlsearch             " incsearch, showmatch and hlsearch work together to highlight search results (as you type). It's really quite handy, as long as you have the next line as well.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Key Remaps
@@ -91,16 +104,6 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
-set ignorecase           
-set smartcase            " ignorecase and smartcase together make Vim deal with case-sensitive search intelligently. If you search for an all-lowercase string your search will be case-insensitive, but if one or more characters is uppercase the search will be case-sensitive. Most of the time this does what you want.
-
-
-set gdefault             " gdefault applies substitutions globally on lines. For example, instead of :%s/foo/bar/g you just type :%s/foo/bar/. This is almost always what you want (when was the last time you wanted to only replace the first occurrence of a word on a line?) and if you need the previous behavior you just tack on the g again.
-
-set incsearch
-set showmatch
-set hlsearch             " incsearch, showmatch and hlsearch work together to highlight search results (as you type). It's really quite handy, as long as you have the next line as well.
-
 """"""""""""""""""""""""""""""
 " => Visual mode related
 """"""""""""""""""""""""""""""
@@ -138,6 +141,18 @@ map <leader>pp :setlocal paste!<cr>
 " The & command is a synonym for :s, which repeats the last substitution. Unfortunately, if any flags were used, the & command disregards them, meaning that the outcome could be quite different from the previous substitution.
 " Making & trigger the :&& command is more useful. It preserves flags and therefore produces more consistent results. These mappings fix the & command in Normal mode and create a Visual mode equivalent:
 nnoremap & :&&<CR> xnoremap & :&&<CR>
+
+" faster tab navigations
+nnoremap H gT
+nnoremap L gt
+
+" Tab navigation like Firefox.
+nnoremap <C-S-tab> :tabprevious<CR>
+nnoremap <C-tab>   :tabnext<CR>
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+inoremap <C-tab>   <Esc>:tabnext<CR>i
+inoremap <C-t>     <Esc>:tabnew<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
@@ -219,23 +234,49 @@ call minpac#add('tpope/vim-commentary')
 " fast find/open files
 call minpac#add('junegunn/fzf')
 
+call minpac#add('preservim/nerdtree')
+
 " Vim Markdown Support
 call minpac#add('godlygeek/tabular')
 call minpac#add('plasticboy/vim-markdown')
-let g:vim_markdown_folding_disabled = 1
+
+" fancy status bar!
+call minpac#add('itchyny/lightline.vim')
+
+" undo tree visualization
+call minpac#add('mbbill/undotree')
+
+" file system explorer
+call minpac#add('preservim/nerdtree')
+call minpac#add('Xuyuanp/nerdtree-git-plugin')
 
 " Color Schemes
 call minpac#add('morhetz/gruvbox')
 " call minpac#add('joshdick/onedark.vim')
 " call minpac#add('altercation/vim-colors-solarized')
 " call minpac#add('drewtempelmeyer/palenight.vim')
-" call minpac#add('itchyny/lightline.vim')
 
 " minpac must have {'type': 'opt'} so that it can be loaded with `packadd`.
 call minpac#add('k-takata/minpac', {'type': 'opt'})
 
 " Load all plugins
 packloadall
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugin Settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" diable folding for markdown
+let g:vim_markdown_folding_disabled = 1
+
+" toggle undo tree
+nnoremap <leader>u :UndotreeToggle<CR>
+
+" toggle nerd tree
+map <C-n> :NERDTreeToggle<CR>
+
+" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Color schemes
