@@ -161,3 +161,11 @@ function! VisualSelection(direction, extra_filter) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Emulated Vim Plugins for ideaVim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set surround
+set commentary
+set textobj-entire
+set exchange

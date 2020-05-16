@@ -3,13 +3,13 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Basic Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set background=dark
 
 " Easier way to exit insert mode
 inoremap jk <ESC>
 
-filetype off            " The filetype and call lines are for loading Pathogen
+filetype off            " the filetype and call lines are for loading Pathogen
 syntax on               " enable syntax processing              
+set noerrorbells        " mute when you reached at the end of the line
 
 filetype plugin indent on
 
@@ -40,10 +40,11 @@ set encoding=utf-8
 set clipboard=unnamedplus
 
 set relativenumber       " relativenumber changes Vim's line number column to display how far away each line is from the current one, instead of showing the absolute line number.
+" set undodir=~/.vim/undodir
 set undofile             " undofile tells Vim to create <FILENAME>.un~ files whenever you edit a file. These files contain undo information so you can undo previous actions even after you close and reopen a file.
 
-" Set <leader> key to ,
-let mapleader = ","
+" Set <leader> key to space
+let mapleader = " "
 
 " Searching/Moving - automatically enable regex when searching
 " nnoremap / /\v
@@ -200,11 +201,22 @@ command! PackClean call minpac#clean()
 packadd minpac 
 call minpac#init()
 
+" more key remaps
 call minpac#add('tpope/vim-unimpaired')
+
+" todo list support
 call minpac#add('aserebryakov/vim-todo-lists')
+
+" ys
 call minpac#add('tpope/vim-surround')
-call minpac#add('tpope/vim-unimpaired')
+
+" dot repeat plugin operations
+call minpac#add('tpope/vim-repeat')
+
+" gcc to easily comment and uncomment
 call minpac#add('tpope/vim-commentary')
+
+" fast find/open files
 call minpac#add('junegunn/fzf')
 
 " Vim Markdown Support
@@ -214,11 +226,10 @@ let g:vim_markdown_folding_disabled = 1
 
 " Color Schemes
 call minpac#add('morhetz/gruvbox')
-call minpac#add('joshdick/onedark.vim')
-call minpac#add('altercation/vim-colors-solarized')
-call minpac#add('drewtempelmeyer/palenight.vim')
-call minpac#add('itchyny/lightline.vim')
-call minpac#add('tpope/vim-repeat')
+" call minpac#add('joshdick/onedark.vim')
+" call minpac#add('altercation/vim-colors-solarized')
+" call minpac#add('drewtempelmeyer/palenight.vim')
+" call minpac#add('itchyny/lightline.vim')
 
 " minpac must have {'type': 'opt'} so that it can be loaded with `packadd`.
 call minpac#add('k-takata/minpac', {'type': 'opt'})
@@ -226,7 +237,9 @@ call minpac#add('k-takata/minpac', {'type': 'opt'})
 " Load all plugins
 packloadall
 
-" Set color schemes
-" colorscheme onedark
-colorscheme palenight
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Color schemes
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set background=dark
+colorscheme gruvbox
 set termguicolors
