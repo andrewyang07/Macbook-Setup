@@ -2,9 +2,9 @@
 
 ## System Settings
 
-* Swap control and command key on external keyboard
-* Remap CapsLock to Ctrl in Setting -> Keyboard -> Modifier Keys
-* Increase keyboard key repeat rate and initial delay
+- Swap control and command key on external keyboard
+- Remap CapsLock to Ctrl in Setting -> Keyboard -> Modifier Keys
+- Increase keyboard key repeat rate and initial delay
 
 ```bash
 # Restart to see the change
@@ -14,14 +14,14 @@ defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 
 ## Software to install
 
-* Rectangle
-* Google Drive
-* JetBrains Toolbox
-* Scroll Reverser
-* Alfred
-* iTerm2
-* VSCode
-* Raindrop.io
+- Rectangle
+- Google Drive
+- JetBrains Toolbox
+- Scroll Reverser
+- Alfred
+- iTerm2
+- VSCode
+- Raindrop.io
 
 ### VSCode Setup
 
@@ -29,51 +29,45 @@ defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 
 ```json
 {
-    "window.zoomLevel": 0,
-    "editor.tabSize": 2,
-    "terminal.integrated.rendererType": "dom",
-    "editor.multiCursorModifier": "ctrlCmd",
-    "vim.startInInsertMode": true,
-    "vim.leader": ",",
-    "vim.insertModeKeyBindings": [
-        {
-            "before": ["j", "k"],
-            "after": ["<Esc>"]
-        }
-    ],
-    "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": ["Z", "Z"],
-            "commands": [
-                ":wq"
-            ]
-        },
-        {
-            "before":["<C-n>"],
-            "commands": [
-                ":nohl"
-            ]
-        },
-        {
-            "before": ["leader", "w"],
-            "commands": [
-                "workbench.action.files.save",
-            ]
-        }
-    ],
-    "vim.easymotion": true,
-    "terminal.integrated.fontFamily": "MesloLGS NF",
-    "workbench.colorTheme": "Material Theme Darker"
+  "window.zoomLevel": 0,
+  "editor.tabSize": 2,
+  "terminal.integrated.rendererType": "dom",
+  "editor.multiCursorModifier": "ctrlCmd",
+  "vim.startInInsertMode": true,
+  "vim.leader": ",",
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["Z", "Z"],
+      "commands": [":wq"]
+    },
+    {
+      "before": ["<C-n>"],
+      "commands": [":nohl"]
+    },
+    {
+      "before": ["leader", "w"],
+      "commands": ["workbench.action.files.save"]
+    }
+  ],
+  "vim.easymotion": true,
+  "terminal.integrated.fontFamily": "MesloLGS NF",
+  "workbench.colorTheme": "Material Theme Darker"
 }
 ```
 
 ## Terminal
 
-* oh-my-zsh
-  * [powerlevel10k](https://github.com/romkatv/powerlevel10k)
-  * [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-  * [zsg-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
-* HomeBrew
+- oh-my-zsh
+  - [powerlevel10k](https://github.com/romkatv/powerlevel10k)
+  - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+  - [zsg-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+- HomeBrew
 
 ### iTerm2
 
@@ -116,5 +110,5 @@ ln -sf ~/Documents/Projects/Macbook-Setup/myzshrc.zshrc ~/.zshrc
 
 ## References
 
-* https://gist.github.com/kevin-smets/8568070
-* https://medium.com/@Clovis_app/configuration-of-a-beautiful-efficient-terminal-and-prompt-on-osx-in-7-minutes-827c29391961
+- https://gist.github.com/kevin-smets/8568070
+- https://medium.com/@Clovis_app/configuration-of-a-beautiful-efficient-terminal-and-prompt-on-osx-in-7-minutes-827c29391961

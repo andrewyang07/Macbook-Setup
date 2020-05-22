@@ -22,7 +22,7 @@ mkdir -p ~/.config/nvim
 in `~/.config/nvim/init.vim`, put below contents in
 
 ```bash
-set runtimepath^=~/.vim runtimepath+=~/.vim/after 
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
 ```
@@ -54,7 +54,7 @@ git clone https://github.com/k-takata/minpac.git
 Add following to `~/.vimrc` to load and initialize the plugin (`myvimrc` should already has it)
 
 ```bash
-packadd minpac 
+packadd minpac
 call minpac#init()
 ```
 
