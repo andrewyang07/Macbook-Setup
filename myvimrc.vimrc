@@ -76,8 +76,8 @@ nmap <leader>w :w<cr>
 " Format API Metrics log entries
 nmap <leader>fapi :%s/,/\r<cr>
 
-" The <leader><space> mapping makes it easy to clear out a search by typing ,<space>. This gets rid of the distracting highlighting once I've found what I'm looking for.
-nnoremap <leader><space> :noh<cr>
+" The <leader>/ mapping makes it easy to clear out a search by typing ,<space>. This gets rid of the distracting highlighting once I've found what I'm looking for.
+nnoremap <leader>/ :noh<cr>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 " Make the tab key match bracket pairs. 
@@ -89,11 +89,6 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-
-nnoremap <leader>h :wincmd h<CR>
-nnoremap <leader>j :wincmd j<CR>
-nnoremap <leader>k :wincmd k<CR>
-nnoremap <leader>l :wincmd l<CR>
 
 map - <C-W>-
 map + <C-W>+
@@ -117,6 +112,13 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
+" Faster movements
+nnoremap J 5gj
+nnoremap K 5gk
+vnoremap J 5gj
+vnoremap K 5gk
+
+nnoremap <leader>j J
 """"""""""""""""""""""""""""""
 " => Visual mode related
 """"""""""""""""""""""""""""""
