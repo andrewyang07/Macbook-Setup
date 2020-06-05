@@ -150,7 +150,6 @@
       "commands": ["editor.action.outdentLines"]
     }
   ],
-
   "vim.easymotion": true,
   "vim.hlsearch": true,
   "vim.enableNeovim": true,
