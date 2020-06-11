@@ -1,14 +1,15 @@
+" Reference: https://stevelosh.com/blog/2010/09/coming-home-to-vim/
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Basic Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set background=dark
 
 " Easier way to exit insert mode
 inoremap jk <ESC>
 
-filetype off            " The filetype and call lines are for loading Pathogen
+filetype off            " the filetype and call lines are for loading Pathogen
 syntax on               " enable syntax processing              
+set noerrorbells        " mute when you reached at the end of the line
 
 filetype plugin indent on
 
@@ -39,14 +40,30 @@ set encoding=utf-8
 set clipboard=unnamedplus
 
 set relativenumber       " relativenumber changes Vim's line number column to display how far away each line is from the current one, instead of showing the absolute line number.
+set undodir=~/.vim/undodir
 set undofile             " undofile tells Vim to create <FILENAME>.un~ files whenever you edit a file. These files contain undo information so you can undo previous actions even after you close and reopen a file.
 
-" Set <leader> key to ,
-let mapleader = ","
+set nobackup
+set nowritebackup
+
+set colorcolumn=80
+highlight ColorColumn ctermbg=0 guibg=lightgrey
+
+" Set <leader> key to space
+let mapleader = " "
 
 " Searching/Moving - automatically enable regex when searching
 " nnoremap / /\v
 " vnoremap / /\v
+
+set ignorecase           
+set smartcase            " ignorecase and smartcase together make Vim deal with case-sensitive search intelligently. If you search for an all-lowercase string your search will be case-insensitive, but if one or more characters is uppercase the search will be case-sensitive. Most of the time this does what you want.
+
+set gdefault             " gdefault applies substitutions globally on lines. For example, instead of :%s/foo/bar/g you just type :%s/foo/bar/. This is almost always what you want (when was the last time you wanted to only replace the first occurrence of a word on a line?) and if you need the previous behavior you just tack on the g again.
+
+set incsearch
+set showmatch
+set hlsearch             " incsearch, showmatch and hlsearch work together to highlight search results (as you type). It's really quite handy, as long as you have the next line as well.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Key Remaps
@@ -59,8 +76,8 @@ nmap <leader>w :w<cr>
 " Format API Metrics log entries
 nmap <leader>fapi :%s/,/\r<cr>
 
-" The <leader><space> mapping makes it easy to clear out a search by typing ,<space>. This gets rid of the distracting highlighting once I've found what I'm looking for.
-nnoremap <leader><space> :noh<cr>
+" The <leader>/ mapping makes it easy to clear out a search by typing ,<space>. This gets rid of the distracting highlighting once I've found what I'm looking for.
+nnoremap <leader>/ :noh<cr>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 " Make the tab key match bracket pairs. 
@@ -72,6 +89,12 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+map - <C-W>-
+map + <C-W>+
+
+nnoremap <silent> <Leader>+ :vertical resize +5<CR>
+nnoremap <silent> <Leader>- :vertical resize -5<CR>
 
 " New Vim users will want the following lines to teach them to do things right:
 " nnoremap <up> <nop>
@@ -89,15 +112,14 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
-set ignorecase           
-set smartcase            " ignorecase and smartcase together make Vim deal with case-sensitive search intelligently. If you search for an all-lowercase string your search will be case-insensitive, but if one or more characters is uppercase the search will be case-sensitive. Most of the time this does what you want.
+" Faster movements
+nnoremap J 5gj
+nnoremap K 5gk
+vnoremap J 5gj
+vnoremap K 5gk
 
-
-set gdefault             " gdefault applies substitutions globally on lines. For example, instead of :%s/foo/bar/g you just type :%s/foo/bar/. This is almost always what you want (when was the last time you wanted to only replace the first occurrence of a word on a line?) and if you need the previous behavior you just tack on the g again.
-
-set incsearch
-set showmatch
-set hlsearch             " incsearch, showmatch and hlsearch work together to highlight search results (as you type). It's really quite handy, as long as you have the next line as well.
+" Join the two lines
+nnoremap <leader>j J
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -124,8 +146,8 @@ vnoremap p "_dP
 " Quickly copy/paste to/from system clipboard
 noremap <Leader>y "*y
 noremap <Leader>p "*p
-noremap <Leader>Y "+y
-noremap <Leader>P "+p
+noremap <Leader>Y "*Y
+noremap <Leader>P "*P
 
 " F5 to set paste
 set pastetoggle=<f5>
@@ -136,6 +158,25 @@ map <leader>pp :setlocal paste!<cr>
 " The & command is a synonym for :s, which repeats the last substitution. Unfortunately, if any flags were used, the & command disregards them, meaning that the outcome could be quite different from the previous substitution.
 " Making & trigger the :&& command is more useful. It preserves flags and therefore produces more consistent results. These mappings fix the & command in Normal mode and create a Visual mode equivalent:
 nnoremap & :&&<CR> xnoremap & :&&<CR>
+
+" faster tab navigations
+nnoremap H gT
+nnoremap L gt
+
+" Tab navigation like Firefox.
+nnoremap <C-S-tab> :tabprevious<CR>
+nnoremap <C-tab>   :tabnext<CR>
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+inoremap <C-tab>   <Esc>:tabnext<CR>i
+inoremap <C-t>     <Esc>:tabnew<CR>
+
+" edit mappings
+noremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
@@ -163,9 +204,52 @@ function! VisualSelection(direction, extra_filter) range
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Emulated Vim Plugins for ideaVim
+" => IdeaVim Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set surround
 set commentary
 set textobj-entire
 set exchange
+
+" diable system clipboard
+set clipboard
+
+" easy window navigation
+nnoremap <leader>h gT
+nnoremap <leader>l gt
+
+" actions
+nnoremap <leader>q :action CloseContent<CR>
+nnoremap <leader>Q :action ReopenClosedTab<CR>
+nnoremap <leader>E :action Switcher<CR>
+nnoremap <leader>t :action FileStructurePopup<CR>
+nnoremap <leader>T :action GotoSymbol<CR>
+nnoremap <leader>a :action GotoAction<CR>
+nnoremap <leader>b :action ToggleLineBreakpoint<CR>
+
+" code navigation
+nnoremap <leader>] :action GotoImplementation<CR>
+nnoremap <leader>[ :action GotoSuperMethod<CR>
+nnoremap <leader>u :action FindUsages<CR>
+nnoremap <leader>k :action HighlightUsagesInFile<CR>
+nnoremap \c :action CheckStyleCurrentFileAction<CR>
+" nnoremap <leader>gt :action GotoTest<cr>
+" nnoremap \r :action RunClass<cr>
+" nnoremap \R :action Run<cr>
+" nnoremap \d :action DebugClass<cr>
+" nnoremap \D :action Debug<cr>
+nmap <leader>g :action GotoImplementation<CR>
+nmap <leader>d :action GotoDeclaration<CR>
+nmap <leader>c :action GotoClass<CR>
+nmap <C-p> :action SearchEverywhere<CR>
+nmap <C-t> :action ActivateTerminalToolWindow<CR>
+
+" unimpaired mappings
+nnoremap [<space> O<esc>j
+nnoremap ]<space> o<esc>k
+nnoremap [q :action PreviousOccurence<cr>
+nnoremap ]q :action NextOccurence<cr>
+nnoremap [m :action MethodUp<cr>
+nnoremap ]m :action MethodDown<cr>
+nnoremap [c :action VcsShowPrevChangeMarker<cr>
+nnoremap ]c :action VcsShowNextChangeMarker<cr>

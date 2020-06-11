@@ -40,7 +40,7 @@ set encoding=utf-8
 set clipboard=unnamedplus
 
 set relativenumber       " relativenumber changes Vim's line number column to display how far away each line is from the current one, instead of showing the absolute line number.
-" set undodir=~/.vim/undodir
+set undodir=~/.vim/undodir
 set undofile             " undofile tells Vim to create <FILENAME>.un~ files whenever you edit a file. These files contain undo information so you can undo previous actions even after you close and reopen a file.
 
 set nobackup
@@ -118,7 +118,9 @@ nnoremap K 5gk
 vnoremap J 5gj
 vnoremap K 5gk
 
+" Join the two lines
 nnoremap <leader>j J
+
 """"""""""""""""""""""""""""""
 " => Visual mode related
 """"""""""""""""""""""""""""""
@@ -200,7 +202,6 @@ function! VisualSelection(direction, extra_filter) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Neovim Settings

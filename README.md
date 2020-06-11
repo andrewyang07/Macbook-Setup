@@ -92,11 +92,11 @@ rm ~/.vimrc
 ln -sf ~/Documents/Projects/Macbook-Setup/myvimrc.vimrc ~/.vimrc
 ```
 
-Symlink `~/.ideavimrc` to `basic.vimrc`
+Symlink `~/.ideavimrc` to `ideavimrc.vimrc`
 
 ```bash
 rm ~/.ideavimrc
-ln -sf ~/Documents/Projects/Macbook-Setup/basic.vimrc ~/.ideavimrc
+ln -sf ~/Documents/Projects/Macbook-Setup/ideavimrc.vimrc ~/.ideavimrc
 ```
 
 ### ZSH

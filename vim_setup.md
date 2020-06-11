@@ -32,10 +32,10 @@ source ~/.vimrc
 Add following to your `~/.zshrc` file
 
 ```bash
-# Use Neovim as "preferred editor"
+# Use NeoVim as "preferred editor"
 export VISUAL=nvim
 
-# Use Neovim instead of Vim or Vi
+# Use NeoVim instead of Vim or Vi
 alias vim=nvim
 alias vi=nvim
 ```
@@ -70,4 +70,10 @@ curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 ```bash
 ~/.vim/bundle && \
 git clone https://tpope.io/vim/surround.git
+```
+
+## Create undo directory for vim
+
+```bash
+mkdir ~/.vim/undodir
 ```
