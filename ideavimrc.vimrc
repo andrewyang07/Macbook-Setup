@@ -1,5 +1,3 @@
-" Reference: https://stevelosh.com/blog/2010/09/coming-home-to-vim/
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Basic Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -37,14 +35,8 @@ set ruler
 set backspace=indent,eol,start
 set laststatus=2
 set encoding=utf-8
-set clipboard=unnamedplus
 
-set relativenumber       " relativenumber changes Vim's line number column to display how far away each line is from the current one, instead of showing the absolute line number.
-set undodir=~/.vim/undodir
-set undofile             " undofile tells Vim to create <FILENAME>.un~ files whenever you edit a file. These files contain undo information so you can undo previous actions even after you close and reopen a file.
-
-set nobackup
-set nowritebackup
+set relativenumber number
 
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
@@ -72,9 +64,6 @@ set hlsearch             " incsearch, showmatch and hlsearch work together to hi
 " Faster saving
 " nmap <leader>w :w!<cr>
 nmap <leader>w :w<cr>
-
-" Format API Metrics log entries
-nmap <leader>fapi :%s/,/\r<cr>
 
 " The <leader>/ mapping makes it easy to clear out a search by typing ,<space>. This gets rid of the distracting highlighting once I've found what I'm looking for.
 nnoremap <leader>/ :noh<cr>
@@ -134,9 +123,6 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-" Save on losing focus.
-au FocusLost * :wa
-
 " Allow deleting single characters without updating the default register
 noremap x "_x
 
@@ -148,12 +134,6 @@ noremap <Leader>y "*y
 noremap <Leader>p "*p
 noremap <Leader>Y "*Y
 noremap <Leader>P "*P
-
-" F5 to set paste
-set pastetoggle=<f5>
-
-" Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
 
 " The & command is a synonym for :s, which repeats the last substitution. Unfortunately, if any flags were used, the & command disregards them, meaning that the outcome could be quite different from the previous substitution.
 " Making & trigger the :&& command is more useful. It preserves flags and therefore produces more consistent results. These mappings fix the & command in Normal mode and create a Visual mode equivalent:

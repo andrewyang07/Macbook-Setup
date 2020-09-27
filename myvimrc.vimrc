@@ -37,9 +37,19 @@ set ruler
 set backspace=indent,eol,start
 set laststatus=2
 set encoding=utf-8
-set clipboard=unnamedplus
 
-set relativenumber       " relativenumber changes Vim's line number column to display how far away each line is from the current one, instead of showing the absolute line number.
+" use system clipboard for vim
+" set clipboard=unnamedplus
+
+set number relativenumber       " relativenumber changes Vim's line number column to display how far away each line is from the current one, instead of showing the absolute line number.
+
+" Both absolute and relative line numbers are enabled by default, which produces “hybrid” line numbers. When entering insert mode, relative line numbers are turned off, leaving absolute line numbers turned on
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
 set undodir=~/.vim/undodir
 set undofile             " undofile tells Vim to create <FILENAME>.un~ files whenever you edit a file. These files contain undo information so you can undo previous actions even after you close and reopen a file.
 
@@ -257,6 +267,7 @@ call minpac#add('tpope/vim-commentary')
 " fast find/open files
 call minpac#add('junegunn/fzf')
 
+" file manager for vim
 call minpac#add('preservim/nerdtree')
 
 " Vim Markdown Support
@@ -288,6 +299,9 @@ call minpac#add('morhetz/gruvbox')
 " call minpac#add('joshdick/onedark.vim')
 " call minpac#add('altercation/vim-colors-solarized')
 " call minpac#add('drewtempelmeyer/palenight.vim')
+
+" Vim Be Good
+" call minpac#add('ThePrimeagen/vim-be-good')
 
 " minpac must have {'type': 'opt'} so that it can be loaded with `packadd`.
 call minpac#add('k-takata/minpac', {'type': 'opt'})
