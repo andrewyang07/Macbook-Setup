@@ -99,6 +99,13 @@ rm ~/.ideavimrc
 ln -sf ~/Documents/Projects/Macbook-Setup/ideavimrc.vimrc ~/.ideavimrc
 ```
 
+Symlink `~/.gvimrc` to `gvimrc.vimrc`
+
+```bash
+rm ~/.gvimrc
+ln -sf ~/Documents/Projects/Macbook-Setup/gvimrc.vimrc ~/.gvimrc
+```
+
 ### ZSH
 
 Symlink `~/.zshrc` to `myzshrc.zshrc`
