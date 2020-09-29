@@ -122,13 +122,13 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
-" Faster movements
+" Faster movements - J, K can move 5 lines at one time
 nnoremap J 5gj
 nnoremap K 5gk
 vnoremap J 5gj
 vnoremap K 5gk
 
-" Join the two lines
+" Join the two lines - restore missng J funtioncality
 nnoremap <leader>j J
 
 """"""""""""""""""""""""""""""
@@ -169,7 +169,7 @@ map <leader>pp :setlocal paste!<cr>
 " Making & trigger the :&& command is more useful. It preserves flags and therefore produces more consistent results. These mappings fix the & command in Normal mode and create a Visual mode equivalent:
 nnoremap & :&&<CR> xnoremap & :&&<CR>
 
-" faster tab navigations
+" Faster tab navigations
 nnoremap H gT
 nnoremap L gt
 
@@ -276,10 +276,10 @@ call minpac#add('plasticboy/vim-markdown')
 
 " fancy status bar!
 call minpac#add('itchyny/lightline.vim')
-" call minpac#add('itchyny/vim-gitbranch')
-
 " call minpac#add('vim-airline/vim-airline')
 " call minpac#add('vim-airline/vim-airline-themes')
+
+" call minpac#add('itchyny/vim-gitbranch')
 
 " undo tree visualization
 call minpac#add('mbbill/undotree')
@@ -299,9 +299,6 @@ call minpac#add('morhetz/gruvbox')
 " call minpac#add('joshdick/onedark.vim')
 " call minpac#add('altercation/vim-colors-solarized')
 " call minpac#add('drewtempelmeyer/palenight.vim')
-
-" Vim Be Good
-" call minpac#add('ThePrimeagen/vim-be-good')
 
 " minpac must have {'type': 'opt'} so that it can be loaded with `packadd`.
 call minpac#add('k-takata/minpac', {'type': 'opt'})

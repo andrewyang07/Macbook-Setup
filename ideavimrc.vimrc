@@ -2,7 +2,6 @@
 " => Basic Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Easier way to exit insert mode
 inoremap jk <ESC>
 
 filetype off            " the filetype and call lines are for loading Pathogen
@@ -26,7 +25,6 @@ set showmode
 set showcmd             " show command in bottom bar
 set hidden
 set wildmenu
-" set wildmode=list:longest
 set wildmode=full
 set visualbell
 set cursorline
@@ -43,10 +41,6 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 " Set <leader> key to space
 let mapleader = " "
-
-" Searching/Moving - automatically enable regex when searching
-" nnoremap / /\v
-" vnoremap / /\v
 
 set ignorecase           
 set smartcase            " ignorecase and smartcase together make Vim deal with case-sensitive search intelligently. If you search for an all-lowercase string your search will be case-insensitive, but if one or more characters is uppercase the search will be case-sensitive. Most of the time this does what you want.
@@ -79,25 +73,8 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-map - <C-W>-
-map + <C-W>+
-
-nnoremap <silent> <Leader>+ :vertical resize +5<CR>
-nnoremap <silent> <Leader>- :vertical resize -5<CR>
-
-" New Vim users will want the following lines to teach them to do things right:
-" nnoremap <up> <nop>
-" nnoremap <down> <nop>
-" nnoremap <left> <nop>
-" nnoremap <right> <nop>
-" inoremap <up> <nop>
-" inoremap <down> <nop>
-" inoremap <left> <nop>
-" inoremap <right> <nop>
-
 nnoremap j gj
 nnoremap k gk
-
 vnoremap j gj
 vnoremap k gk
 
