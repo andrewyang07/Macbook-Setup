@@ -4,23 +4,21 @@
 " => Basic Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Easier way to exit insert mode
+" jk to normal mode
 inoremap jk <ESC>
 
+" set <leader> key to space
+let mapleader = " "
 filetype off            " the filetype and call lines are for loading Pathogen
 syntax on               " enable syntax processing              
 set noerrorbells        " mute when you reached at the end of the line
-
 filetype plugin indent on
-
 set nocompatible        " get rid of all the crap that Vim does to be vi compatible
 set modelines=0         " prevents some security exploits having to do with modelines in files
-
 set tabstop=4           " 4 space tab
 set shiftwidth=4        " 4 space tab
 set softtabstop=4       " 4 space tab
 set expandtab           " use spaces for tabs
-
 set encoding=utf-8
 set scrolloff=3
 set autoindent
@@ -41,7 +39,22 @@ set encoding=utf-8
 " use system clipboard for vim
 " set clipboard=unnamedplus
 
-set number relativenumber       " relativenumber changes Vim's line number column to display how far away each line is from the current one, instead of showing the absolute line number.
+" Searching/Moving - automatically enable regex when searching
+" nnoremap / /\v
+" vnoremap / /\v
+
+set ignorecase           
+set smartcase            " ignorecase and smartcase together make Vim deal with case-sensitive search intelligently. If you search for an all-lowercase string your search will be case-insensitive, but if one or more characters is uppercase the search will be case-sensitive. Most of the time this does what you want.
+set gdefault             " gdefault applies substitutions globally on lines. For example, instead of :%s/foo/bar/g you just type :%s/foo/bar/. This is almost always what you want (when was the last time you
+
+" incsearch, showmatch and hlsearch work together to highlight search results (as you type). It's really quite handy, as long as you have the next line as well. wanted to only replace the first occurrence of a word on a line?) and if you need the previous behavior you just tack on the g again.
+set incsearch
+set showmatch
+set hlsearch
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Settings that only work on vim or nvim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Both absolute and relative line numbers are enabled by default, which produces “hybrid” line numbers. When entering insert mode, relative line numbers are turned off, leaving absolute line numbers turned on
 augroup numbertoggle
@@ -50,30 +63,19 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
-set undodir=~/.vim/undodir
-set undofile             " undofile tells Vim to create <FILENAME>.un~ files whenever you edit a file. These files contain undo information so you can undo previous actions even after you close and reopen a file.
-
+set number relativenumber       " relativenumber changes Vim's line number column to display how far away each line is from the current one, instead of showing the absolute line number.
 set nobackup
 set nowritebackup
 
+set undodir=~/.vim/undodir
+set undofile             " undofile tells Vim to create <FILENAME>.un~ files whenever you edit a file. These files contain undo information so you can undo previous actions even after you close and reopen a file.
+
+" use a vertical column to measure length of each line
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
-" Set <leader> key to space
-let mapleader = " "
-
-" Searching/Moving - automatically enable regex when searching
-" nnoremap / /\v
-" vnoremap / /\v
-
-set ignorecase           
-set smartcase            " ignorecase and smartcase together make Vim deal with case-sensitive search intelligently. If you search for an all-lowercase string your search will be case-insensitive, but if one or more characters is uppercase the search will be case-sensitive. Most of the time this does what you want.
-
-set gdefault             " gdefault applies substitutions globally on lines. For example, instead of :%s/foo/bar/g you just type :%s/foo/bar/. This is almost always what you want (when was the last time you wanted to only replace the first occurrence of a word on a line?) and if you need the previous behavior you just tack on the g again.
-
-set incsearch
-set showmatch
-set hlsearch             " incsearch, showmatch and hlsearch work together to highlight search results (as you type). It's really quite handy, as long as you have the next line as well.
+" Save on losing focus.
+au FocusLost * :wa
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Key Remaps
@@ -118,7 +120,6 @@ nnoremap <silent> <Leader>- :vertical resize -5<CR>
 
 nnoremap j gj
 nnoremap k gk
-
 vnoremap j gj
 vnoremap k gk
 
@@ -131,9 +132,6 @@ vnoremap K 5gk
 " Join the two lines - restore missng J funtioncality
 nnoremap <leader>j J
 
-""""""""""""""""""""""""""""""
-" => Visual mode related
-""""""""""""""""""""""""""""""
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
@@ -143,9 +141,6 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
-
-" Save on losing focus.
-au FocusLost * :wa
 
 " Allow deleting single characters without updating the default register
 noremap x "_x
@@ -242,69 +237,75 @@ endif
 nnoremap <C-p> :<C-u>FZF<CR>
 
 " minpac shortcuts
-command! PackUpdate call minpac#update()
-command! PackClean call minpac#clean()
+" command! PackUpdate call minpac#update()
+" command! PackClean call minpac#clean()
 
-" Initialize minpac
-packadd minpac 
-call minpac#init()
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-fugitive'
 
 " more key remaps
-call minpac#add('tpope/vim-unimpaired')
+Plug 'tpope/vim-unimpaired'
 
 " todo list support
-call minpac#add('aserebryakov/vim-todo-lists')
+Plug 'aserebryakov/vim-todo-lists'
 
 " ys
-call minpac#add('tpope/vim-surround')
+Plug 'tpope/vim-surround'
 
 " dot repeat plugin operations
-call minpac#add('tpope/vim-repeat')
+Plug 'tpope/vim-repeat'
 
 " gcc to easily comment and uncomment
-call minpac#add('tpope/vim-commentary')
+Plug 'tpope/vim-commentary'
 
 " fast find/open files
-call minpac#add('junegunn/fzf')
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " file manager for vim
-call minpac#add('preservim/nerdtree')
+Plug 'preservim/nerdtree'
 
 " Vim Markdown Support
-call minpac#add('godlygeek/tabular')
-call minpac#add('plasticboy/vim-markdown')
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 " fancy status bar!
-call minpac#add('itchyny/lightline.vim')
-" call minpac#add('vim-airline/vim-airline')
-" call minpac#add('vim-airline/vim-airline-themes')
+Plug 'itchyny/lightline.vim'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 
-" call minpac#add('itchyny/vim-gitbranch')
+Plug 'itchyny/vim-gitbranch'
 
 " undo tree visualization
-call minpac#add('mbbill/undotree')
+Plug 'mbbill/undotree'
 
 " file system explorer
-call minpac#add('preservim/nerdtree')
-call minpac#add('Xuyuanp/nerdtree-git-plugin')
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " underline word under current cursor
-call minpac#add('itchyny/vim-cursorword')
+Plug 'itchyny/vim-cursorword'
+
+Plug 'justinmk/vim-sneak'
 
 " auto completion
-" call minpac#add('neoclide/coc.nvim', {'branch': 'release'})
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Color Schemes
-call minpac#add('morhetz/gruvbox')
-" call minpac#add('joshdick/onedark.vim')
-" call minpac#add('altercation/vim-colors-solarized')
-" call minpac#add('drewtempelmeyer/palenight.vim')
+Plug 'morhetz/gruvbox'
+Plug 'joshdick/onedark.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'sainnhe/gruvbox-material'
+Plug 'phanviet/vim-monokai-pro'
+Plug 'flazz/vim-colorschemes'
+Plug 'chriskempson/base16-vim'
 
-" minpac must have {'type': 'opt'} so that it can be loaded with `packadd`.
-call minpac#add('k-takata/minpac', {'type': 'opt'})
+" Vim be good
+Plug 'ThePrimeagen/vim-be-good'
 
-" Load all plugins
-packloadall
+call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin Settings
@@ -334,5 +335,5 @@ set noshowmode
 " => Color schemes
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
-colorscheme gruvbox
+colorscheme gruvbox-material
 set termguicolors
