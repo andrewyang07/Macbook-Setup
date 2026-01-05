@@ -1,5 +1,14 @@
 # MacBook-Setup
 
+## How to use this guide
+
+Follow the sections in order. Each section is a checkpoint; finish one before moving on.
+
+- You need an admin account on the Mac.
+- Be online for installs and GitHub access.
+- Use Terminal for all commands; open a fresh terminal after installing Homebrew.
+- When something fails, re-run the exact step after fixing the error.
+
 ## Quick start
 
 Install git first:
@@ -18,6 +27,7 @@ pbcopy < ~/.ssh/id_ed25519.pub
 Add the SSH key to GitHub, then:
 
 ```bash
+ssh -T git@github.com
 cd ~/Documents
 mkdir -p Projects
 cd Projects
@@ -92,6 +102,12 @@ Reminder: run `brew bundle` only after Homebrew is installed.
 ```bash
 npm install -g expo @openai/codex
 ```
+
+## Post-install checks
+
+- Open key apps once so macOS can register permissions (Terminal, iTerm2, Chrome).
+- Sign in to Google Drive/Chrome and any AI desktop apps you use.
+- Restart the Mac after installing system-level tools and keyboard settings.
 
 ## VSCode Setup
 
