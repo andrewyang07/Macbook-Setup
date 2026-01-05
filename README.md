@@ -74,6 +74,7 @@ Reminder: run `brew bundle` only after Homebrew is installed.
 | WeChat | Messaging client. |
 | CapCut | Video editor. |
 | Microsoft Edge | Secondary web browser. |
+| Visual Studio Code | Code editor. |
 
 ### Brewfile CLI tools
 
@@ -95,6 +96,14 @@ npm install -g expo @openai/codex
 ## VSCode Setup
 
 See `vscode_settings.json` and `vscode_setup.md`.
+
+## Updating Brewfile
+
+Use this to sync installed apps/tools back into `Brewfile`:
+
+```bash
+brew bundle dump --file ./Brewfile --force
+```
 
 ## Terminal
 
