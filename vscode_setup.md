@@ -14,5 +14,9 @@
 ## Apply `vscode_settings.json`
 
 ```bash
-cat vscode_settings.json > $HOME/Library/Application\ Support/Code/User/settings.json
+if [ -f $HOME/Library/Application\ Support/Code/User/settings.json ]; then
+  cp $HOME/Library/Application\ Support/Code/User/settings.json \
+    $HOME/Library/Application\ Support/Code/User/settings.json.bak
+fi
+cp vscode_settings.json $HOME/Library/Application\ Support/Code/User/settings.json
 ```
